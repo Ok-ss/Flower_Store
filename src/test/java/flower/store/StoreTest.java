@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Assertions;
 
 public class StoreTest {
     private Store store;
@@ -16,8 +16,8 @@ public class StoreTest {
     private FlowerPack tulipPack;
     private FlowerBucket bucketOne;
     private FlowerBucket bucketTwo;
-    private static int quantity = 10;
-    private static int quantityT = 20;
+    private static final int QUANTITY = 10;
+    private static final int Q_TULIP = 20;
 
     @BeforeEach
     public void setUp() {
@@ -25,8 +25,8 @@ public class StoreTest {
         rose = new Rose();
         tulip = new Tulip();
 
-        rosePack = new FlowerPack(rose, quantity);
-        tulipPack = new FlowerPack(tulip, quantityT);
+        rosePack = new FlowerPack(rose, QUANTITY);
+        tulipPack = new FlowerPack(tulip, Q_TULIP);
 
         bucketOne = new FlowerBucket();
         bucketOne.add(rosePack);
@@ -40,7 +40,7 @@ public class StoreTest {
 
     @Test
     public void testAddBucket() {
-        assertEquals(2, store.searchBucket(
+        Assertions.assertEquals(2, store.searchBucket(
                                 Optional.empty(),
                                 Optional.empty(),
                                 Optional.empty()).size());
@@ -53,18 +53,18 @@ public class StoreTest {
                             Optional.empty(),
                             Optional.empty());
 
-        assertEquals(1, result.size());
-        assertEquals(rosePack, result.get(0));
+        Assertions.assertEquals(1, result.size());
+        Assertions.assertEquals(rosePack, result.get(0));
     }
 
     @Test
     public void testSearchPackByQuantity() {
         ArrayList<FlowerPack> result = store.searchPack(
                                         Optional.empty(),
-                                        Optional.of(quantity),
+                                        Optional.of(QUANTITY),
                                         Optional.empty());
-        assertEquals(1, result.size());
-        assertEquals(rosePack, result.get(0));
+        Assertions.assertEquals(1, result.size());
+        Assertions.assertEquals(rosePack, result.get(0));
     }
 
     @Test
@@ -73,8 +73,8 @@ public class StoreTest {
                                         Optional.empty(),
                                         Optional.empty(),
                             Optional.of(rosePack.getPrice()));
-        assertEquals(1, result.size());
-        assertEquals(rosePack, result.get(0));
+        Assertions.assertEquals(1, result.size());
+        Assertions.assertEquals(rosePack, result.get(0));
     }
 
     @Test
@@ -86,8 +86,8 @@ public class StoreTest {
                                         Optional.of(flowerTypes),
                                         Optional.empty(),
                                         Optional.empty());
-        assertEquals(1, result.size());
-        assertEquals(bucketOne, result.get(0));
+        Assertions.assertEquals(1, result.size());
+        Assertions.assertEquals(bucketOne, result.get(0));
     }
 
     @Test
@@ -96,7 +96,7 @@ public class StoreTest {
                                             Optional.empty(),
                                             Optional.of(1),
                                             Optional.empty());
-        assertEquals(2, result.size());
+        Assertions.assertEquals(2, result.size());
     }
 
     @Test
@@ -105,19 +105,19 @@ public class StoreTest {
                                             Optional.empty(),
                                             Optional.empty(),
                                             Optional.of(bucketOne.getPrice()));
-        assertEquals(1, result.size());
-        assertEquals(bucketOne, result.get(0));
+        Assertions.assertEquals(1, result.size());
+        Assertions.assertEquals(bucketOne, result.get(0));
     }
 
     @Test
 public void testSearchPackByFlowerTypeAndQuantity() {
     ArrayList<FlowerPack> result = store.searchPack(
         Optional.of(FlowerType.ROSE), 
-        Optional.of(quantity), 
+        Optional.of(QUANTITY), 
         Optional.empty()
     );
-    assertEquals(1, result.size());
-    assertEquals(rosePack, result.get(0));
+    Assertions.assertEquals(1, result.size());
+    Assertions.assertEquals(rosePack, result.get(0));
 }
 
 @Test
@@ -127,8 +127,8 @@ public void testSearchPackByFlowerTypeAndPrice() {
         Optional.empty(), 
         Optional.of(tulipPack.getPrice())
     );
-    assertEquals(1, result.size());
-    assertEquals(tulipPack, result.get(0));
+    Assertions.assertEquals(1, result.size());
+    Assertions.assertEquals(tulipPack, result.get(0));
 }
 
 @Test
@@ -136,11 +136,11 @@ public void testSearchPackByAllCriteria() {
     
     ArrayList<FlowerPack> result = store.searchPack(
         Optional.of(FlowerType.ROSE), 
-        Optional.of(quantity), 
+        Optional.of(QUANTITY), 
         Optional.of(rosePack.getPrice())
     );
-    assertEquals(1, result.size());
-    assertEquals(rosePack, result.get(0));
+    Assertions.assertEquals(1, result.size());
+    Assertions.assertEquals(rosePack, result.get(0));
 }
 
 @Test
@@ -153,8 +153,8 @@ public void testSearchBucketByFlowerTypesAndNumOfPacks() {
         Optional.of(1), 
         Optional.empty()
     );
-    assertEquals(1, result.size());
-    assertEquals(bucketOne, result.get(0));
+    Assertions.assertEquals(1, result.size());
+    Assertions.assertEquals(bucketOne, result.get(0));
 }
 
 @Test
@@ -167,8 +167,8 @@ public void testSearchBucketByFlowerTypesAndPrice() {
         Optional.empty(), 
         Optional.of(bucketOne.getPrice())
     );
-    assertEquals(1, result.size());
-    assertEquals(bucketTwo, result.get(0));
+    Assertions.assertEquals(1, result.size());
+    Assertions.assertEquals(bucketTwo, result.get(0));
 }
 
 @Test
@@ -181,8 +181,8 @@ public void testSearchBucketByAllCriteria() {
         Optional.of(1), 
         Optional.of(bucketOne.getPrice())
     );
-    assertEquals(1, result.size());
-    assertEquals(bucketOne, result.get(0));
+    Assertions.assertEquals(1, result.size());
+    Assertions.assertEquals(bucketOne, result.get(0));
 }
 
 
