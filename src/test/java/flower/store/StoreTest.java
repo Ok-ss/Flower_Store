@@ -16,8 +16,8 @@ public class StoreTest {
     private FlowerPack tulipPack;
     private FlowerBucket bucketOne;
     private FlowerBucket bucketTwo;
-    private static final int QUANTITY = 10;
-    private static final int Q_TULIP = 20;
+    final private static int QUANTITY = 10;
+    final private static int Q_TULIP = 20;
 
     @BeforeEach
     public void setUp() {
