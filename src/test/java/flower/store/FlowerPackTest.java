@@ -1,6 +1,6 @@
 package flower.store;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.Random;
 
@@ -16,70 +16,70 @@ public class FlowerPackTest {
 //ROSE PACK
     @Test
     public void testRosePack() {
-        double price_r = RANDOM_GENERATOR.nextDouble(MAX_PRICE);
+        double priceR = RANDOM_GENERATOR.nextDouble(MAX_PRICE);
         Rose rose = new Rose();
-        rose.setPrice(price_r);
+        rose.setPrice(priceR);
         int quantity = RANDOM_GENERATOR.nextInt(MAX_QUANTITY);
 
         FlowerPack pack = new FlowerPack(rose, quantity);
-        assertEquals(pack.getPrice(), price_r*quantity);
+        Assertions.assertEquals(pack.getPrice(), priceR*quantity);
     }
 
     @Test
     public void testEmptyRosePack() {
-        double price_r = RANDOM_GENERATOR.nextDouble(MAX_PRICE);
+        double priceR = RANDOM_GENERATOR.nextDouble(MAX_PRICE);
         Rose rose = new Rose();
-        rose.setPrice(price_r);
+        rose.setPrice(priceR);
         int quantity = 0;
 
         FlowerPack pack = new FlowerPack(rose, quantity);
-        assertEquals(pack.getPrice(), price_r*quantity);
+        Assertions.assertEquals(pack.getPrice(), priceR*quantity);
     }
 
 //TULIP PACK 
     @Test 
     public void testTulipPack() {
-        double price_t = RANDOM_GENERATOR.nextDouble(MAX_PRICE);
+        double priceT = RANDOM_GENERATOR.nextDouble(MAX_PRICE);
         Tulip tulip = new Tulip();
-        tulip.setPrice(price_t);
+        tulip.setPrice(priceT);
         int quantity = RANDOM_GENERATOR.nextInt(MAX_QUANTITY);
 
         FlowerPack pack = new FlowerPack(tulip, quantity);
-        assertEquals(pack.getPrice(), quantity*price_t);
+        Assertions.assertEquals(pack.getPrice(), quantity*priceT);
     }
 
     @Test
     public void testEmptyTulipPack() {
-        double price_t = RANDOM_GENERATOR.nextDouble(MAX_PRICE);
+        double priceT = RANDOM_GENERATOR.nextDouble(MAX_PRICE);
         Tulip tulip = new Tulip();
-        tulip.setPrice(price_t);
+        tulip.setPrice(priceT);
         int quantity = 0;
     
         FlowerPack pack = new FlowerPack(tulip, quantity);
-        assertEquals(pack.getPrice(), quantity*price_t);
+        Assertions.assertEquals(pack.getPrice(), quantity*priceT);
     }
 
 
 //CHAMOMILE PACK  
     @Test
     public void testChamomilePack() {
-        double price_c = RANDOM_GENERATOR.nextDouble(MAX_PRICE);
+        double priceC = RANDOM_GENERATOR.nextDouble(MAX_PRICE);
         Chamomile chamomile = new Chamomile();
-        chamomile.setPrice(price_c);
+        chamomile.setPrice(priceC);
         int quantity = RANDOM_GENERATOR.nextInt(MAX_QUANTITY);
 
         FlowerPack pack = new FlowerPack(chamomile, quantity);
-        assertEquals(pack.getPrice(), quantity*price_c);
+        Assertions.assertEquals(pack.getPrice(), quantity*priceC);
     }
 
     @Test
     public void testEmptyChamomilePack() {
-        double price_c = RANDOM_GENERATOR.nextDouble(MAX_PRICE);
+        double priceC = RANDOM_GENERATOR.nextDouble(MAX_PRICE);
         Chamomile chamomile = new Chamomile();
-        chamomile.setPrice(price_c);
+        chamomile.setPrice(priceC);
         int quantity = 0;
 
         FlowerPack pack = new FlowerPack(chamomile, quantity);
-        assertEquals(pack.getPrice(), quantity*price_c);
+        Assertions.assertEquals(pack.getPrice(), quantity*priceC);
     }
 }
